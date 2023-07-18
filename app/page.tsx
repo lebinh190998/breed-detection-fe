@@ -1,4 +1,5 @@
 import Nav from "@components/Nav";
+import ImageUpload from "@components/ImageUpload";
 
 type Props = {};
 
@@ -11,6 +12,7 @@ const Home = (props: Props) => {
 				<br className="max-md:hidden" />
 				<span className="orange_gradient text-center">AI Pet Breed Detector</span>
 			</h1>
+      <ImageUpload />
 		</section>
 	);
 };
