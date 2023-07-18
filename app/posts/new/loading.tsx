@@ -2,10 +2,10 @@ import React from 'react'
 
 type Props = {}
 
-const loading = (props: Props) => {
+const Loading = (props: Props) => {
   return (
     <div>loading</div>
   )
 }
 
-export default loading
+export default Loading

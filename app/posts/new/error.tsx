@@ -7,7 +7,7 @@ type Props = {
     reset: () => void;
 }
 
-const error = ({error, reset}: Props) => {
+const Error = ({error, reset}: Props) => {
     useEffect(() => {
         // Log the error to an error reporting service
         console.error(error)
@@ -24,4 +24,4 @@ const error = ({error, reset}: Props) => {
   )
 }
 
-export default error
+export default Error
