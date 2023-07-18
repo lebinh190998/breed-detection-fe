@@ -41,6 +41,15 @@ const ImageUpload = (props: Props) => {
 		try {
 			setLoading(true);
 			if (!selectedImage) return;
+
+			// Check if the selected image exceeds the maximum file size (2MB)
+			const maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
+			if (selectedImage.size > maxFileSize) {
+				setLoading(false);
+				alert("Please select an image that is smaller than 2MB.");
+				return;
+			}
+
 			const headers = new Headers({
 				accept: "application/json",
 			});
