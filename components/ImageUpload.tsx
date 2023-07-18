@@ -2,6 +2,7 @@
 
 import { useState, ChangeEvent, DragEvent, useRef } from "react";
 import Image from "next/image";
+import Loading from "./Loading";
 type Props = {};
 
 const ImageUpload = (props: Props) => {
@@ -10,6 +11,7 @@ const ImageUpload = (props: Props) => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	const [result, setResult] = useState<string | null>(null);
+	const [loading, setLoading] = useState<boolean>(false);
 
 	const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files && e.target.files[0];
@@ -35,11 +37,12 @@ const ImageUpload = (props: Props) => {
 		e.preventDefault();
 	};
 
-	const handleImageUpload = async () => {
+	const handleDetect = async () => {
 		try {
+			setLoading(true);
 			if (!selectedImage) return;
 			const headers = new Headers({
-				"accept": "application/json",
+				accept: "application/json",
 			});
 			const formData = new FormData();
 			formData.append("image", selectedImage);
@@ -59,14 +62,15 @@ const ImageUpload = (props: Props) => {
 			console.log("API response:", data);
 
 			// Handle the API response as needed
+			setLoading(false);
 			setResult(data.breed);
 		} catch (error) {
+			setLoading(false);
 			console.error("Error uploading image:", error);
 		}
 	};
 
 	const handleDragAndDropClick = () => {
-		alert("clicked");
 		if (fileInputRef.current) {
 			fileInputRef.current.click();
 		}
@@ -99,11 +103,12 @@ const ImageUpload = (props: Props) => {
 			</div>
 			<button
 				className="black_btn orange_gradient"
-				onClick={handleImageUpload}
+				onClick={handleDetect}
 				disabled={!selectedImage}
 			>
 				Detect
 			</button>
+			{loading && <Loading />}
 			{result && (
 				<h2 className="head_text text-center">
 					Your pet is a <br className="max-md:hidden" />
