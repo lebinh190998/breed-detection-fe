@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
 	title: "VisionPaws",
-	description: "AI Pet Breed Detector",
+	description: "Is your pet a dog or a cat?",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {

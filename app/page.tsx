@@ -10,7 +10,7 @@ const Home = (props: Props) => {
 			<h1 className="head_text text-center">
 				VisionPaws
 				<br className="max-md:hidden" />
-				<span className="orange_gradient text-center">AI Pet Breed Detector</span>
+				<span className="orange_gradient text-center">Is your pet a dog or a cat?</span>
 			</h1>
       <ImageUpload />
 		</section>
